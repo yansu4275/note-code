@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手势拖动选择日期-移动端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script src="js/jquery.min-1.8.js"></script>
+    <script type="text/javascript" src="js/mobileSelect.js"></script>
+    <link rel="stylesheet" href="js/mobileSelect.css">
+    
+    <style type="text/css">
+        html,body{
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            font-size: 16px;
+            font-family: Helvetica,"Helvetica Neue",Arial,sans-serif;
+            height: 100%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .mobileSelect .content .btnBar .ensure2{
+        	color: red;
+        	display: none;
+        }
+        
+        .hideclass{
+        }
+    </style>
+</head>
+<body>
+	<button class="aaa">预约</button>
+    <p id="select_1">开始时间：</p>
+    
+    <p id="select_2">结束时间：</p>
+    
+    
+<script type="text/javascript" src=" js/selectDate.js"></script>
+<script type="text/javascript">
+	
+	$('.aaa').click(function(){
+		$('#select_1').click()
+	})
+	
+	
+    /*设置全部参数*/
+    $.selectDate("#select_1",{
+        start:1994,
+        end:2018,
+        select:[2012,5,6],
+        title:'开始时间'
+    },function(){
+    	console.log('开始时间' + $('#select_1').text())
+			
+    	$('#select_2').click()
+    	$('.mobileSelect .content .btnBar .ensure').text('确定')
+    	
+    });
+    
+    $.selectDate("#select_2",{
+        start:1994,
+        end:2018,
+        select:[2012,5,6],
+        title:'结束时间'
+    },function(){
+    	console.log('结束时间' + $('#select_2').text())
+    });
+    
+    
+    
+    
+    
+    
+    
+    //
+    dobj=new Date();
+			year=dobj.getFullYear();
+			month=dobj.getMonth() + 1; /*js 月份是从0开始的，所以要加1*/
+			day=dobj.getDay();
+			hour=dobj.getHours();
+			minute=dobj.getMinutes();
+			second=dobj.getSeconds();
+			
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>开始使用layer</title>
+  <script src="js/jquery-3.2.0.min.js"></script>
+  <script src="layer/layer.js"></script>
+  
+</head>
+<body>
+	<button id="fff">右下角弹窗</button>
+  
+  
+  
+
+
+</body>
+</html>
+<script type="text/javascript">
+	//右下角弹窗
+	$('#fff').on('click',function(){
+		layer.open({
+		type: 1,
+		offset: '',		//具体配置参考：offset参数项,
+		content: '<div style="padding: 20px 80px;">内容</div>',
+		btn: '关闭全部',
+		btnAlign: 'c', 		//按钮居中,
+	  	shadeClose: true, //点击遮罩关闭层
+		shade: 0.1 ,        //不显示遮罩,0~~1,这只背景透明度
+		yes: function(){
+			    layer.closeAll();
+			}
+		});
+	})
+			
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min-1.8.js"></script>
+	</head>
+	<body>
+		<button class="aaa">点赞<span class="bbb">0</span></button>
+		<script type="text/javascript">
+			i=0
+			$('.aaa').click(function(){
+				if (i==0) {
+					val=parseInt($('.bbb').html())+1
+					$('span').html(val)
+				} else{
+					alert('只能点一次')
+				}
+				i++;
+			})
+			
+		</script>
+	</body>
+</html>

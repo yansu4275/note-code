@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>test</title>
+	<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+</head>
+<body>
+	<button id="btn">显示</button>
+	<div style="display:none; width:200px; height:200px; background-color:#ddd;" id="box">
+   	 	内层的文字
+	</div>
+	
+	<script>
+	$(function(){
+	    $('#btn').click(function(){
+	        $('#box').toggle('slow')
+	    });
+	     
+	    $(document).on('click',function(e){
+	        if(!$(e.target).is($('#btn')) && !$(e.target).is($('#box')) && $(e.target).parent('#box').length === 0){
+	        $('#box').hide('slow');
+	        }
+	    });
+	});
+	</script>
+</body>
+</html>

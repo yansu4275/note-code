@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<style type="text/css">
+			.aaa{
+				height: 200px;
+				background: #FFF9EC;
+			}
+			.bbb span{
+				background: #C9C9C9;
+				padding: 10px 20px;
+			}
+			.bbb span.active{
+				background: #FD482C;
+			}
+			
+			.ccc{
+				background: #B0E0E6;
+				display: none;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<p>siblings---------在同一个父元素中的其他元素</p>
+		<p>.aaa .ccc:nth-of-type(2)------获取aaa中所有子元素的第二个，这个元素为ccc</p>
+		
+		<!--**************************************************************第一个-->
+		<div class="aaa">
+			<div class="bbb">
+				<span>1111</span>
+				<span>2222</span>
+				<span>3333</span>
+				<span>4444</span>
+			</div>
+			
+			<div class="ccc">
+				<p>11111111111111111111111111111111</p>
+				<p>11111111111111111111111111111111</p>
+				<p>11111111111111111111111111111111</p>
+			</div>
+			<div class="ccc">
+				<p>22222222222222222222222222222222</p>
+				<p>22222222222222222222222222222222</p>
+				<p>22222222222222222222222222222222</p>
+			</div>
+			<div class="ccc">
+				<p>33333333333333333333333333333333</p>
+				<p>33333333333333333333333333333333</p>
+				<p>33333333333333333333333333333333</p>
+			</div>
+			<div class="ccc">
+				<p>44444444444444444444444444444444</p>
+				<p>44444444444444444444444444444444</p>
+				<p>44444444444444444444444444444444</p>
+			</div>
+		</div>
+		
+		<hr /><hr /><hr /><hr /><hr />
+		
+		<!--******************************************************************第二个-->
+		<div class="aaa">
+			<div class="bbb">
+				<span >1111</span>
+				<span >2222</span>
+				<span >3333</span>
+				<span >4444</span>
+			</div>
+			
+			<div class="ccc">
+				<p>11111111111111111111111111111111</p>
+				<p>11111111111111111111111111111111</p>
+				<p>11111111111111111111111111111111</p>
+			</div>
+			<div class="ccc">
+				<p>22222222222222222222222222222222</p>
+				<p>22222222222222222222222222222222</p>
+				<p>22222222222222222222222222222222</p>
+			</div>
+			<div class="ccc">
+				<p>33333333333333333333333333333333</p>
+				<p>33333333333333333333333333333333</p>
+				<p>33333333333333333333333333333333</p>
+			</div>
+			<div class="ccc">
+				<p>44444444444444444444444444444444</p>
+				<p>44444444444444444444444444444444</p>
+				<p>44444444444444444444444444444444</p>
+			</div>
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	$('.bbb span').mouseenter(function(){
+		$(this).addClass('active');
+		$(this).siblings('.bbb span').removeClass('active')//和他同级的其他的span移出active
+
+		
+		idx=$(this).index('.bbb span');
+		$('.ccc').eq(idx).show();
+		$('.ccc').eq(idx).siblings('.ccc').hide()
+		
+	})
+	
+	// 初始默认显示
+	$('.bbb span:first-child').addClass('active');
+	$('.aaa .ccc:nth-of-type(2)').show();
+	
+</script>

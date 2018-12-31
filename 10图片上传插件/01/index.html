@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>上传图片插件</title>
+		
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/bootstrap.css"/>
+		
+		<link href="css/common.css" type="text/css" rel="stylesheet"/>
+		<link href="css/index.css" type="text/css" rel="stylesheet"/>
+		<script src="js/imgUp.js"></script>
+		
+		<style type="text/css">
+			/*总的div*/
+			.z_photo{
+				border: none;
+			}
+			
+			#file{
+				/*display: none;*/
+			}
+			/*点击位置*/				
+			.z_file{
+				width: 68px !important;
+				height: 68px !important;
+				outline: 1px red solid;
+				text-align: center;
+				line-height: 68px;
+			}
+			/*上传的图片外部div*/
+			.up-section{
+				width: 68px !important;
+				height: 68px !important;
+				outline: 1px red solid;
+				margin: 0 17.7px 0 0 ;
+				position: relative;
+			}
+			.up-img{
+				width: 100%;
+				height: 100%;
+			}
+			.close-upimg{
+				position: absolute;			
+				top: 0;	
+				right: 0;
+			}
+			
+			/*删除图片按钮*/
+			.close-upimg{
+				display: block !important;
+			}
+			.up-section:hover {
+				border: none;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="img-box full">
+			<section class=" img-section">
+				<!--<p class="up-p">作品图片：<span class="up-span">最多可以上传5张图片，马上上传</span></p>-->
+				<div class="z_photo upimg-div clear" >
+		               
+		               	 <section class="z_file fl">
+		               	 	+
+		               	 	<input type="file" name="file" id="file" class="file" value="" />
+		               	 	
+		               	 </section>
+		         </div>
+		         
+			 </section>
+			 
+		</div>
+		
+		<button id="img_hint" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">按钮</button>
+		
+<!--弹出部分-->
+		<div id="mymodal" class="modal fade">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3>头部区域</h3>
+					</div>
+					
+					<div class="modal-body">
+						<p class="lead">内容区域</p>
+						<p class="lead">内容区域</p>
+						<p class="lead">内容区域</p>
+					</div>
+					
+					<div class="modal-footer">
+						<button class="btn btn-primary save">执行 save，然后关闭弹框</button>
+						<button class="btn btn-default" data-dismiss="modal">直接关闭</button>
+
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+<!--弹出部分-->
+
+		
+		
+		
+		
+	</body>
+</html>

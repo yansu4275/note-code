@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-3.2.0.min.js"></script>
+		<script src="01header.js"></script>
+		<style type="text/css">
+			#header p{
+				color:red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="header">原来的内容</div>
+		
+		<hr />
+		<hr />
+		<hr />
+		<div id="p02"></div>		
+		
+		<hr />
+		<hr />
+		<hr />
+		
+		<h3>引入html</h3>
+		
+		<hr />	
+		<h3>引入html中的div</h3>
+		<h3>js必须放在div内部才能有效果</h3>
+		
+		<hr />
+		
+		<h3>js样式
+				$(document).on('click', 'dom', function(){}) 
+			格式写，因为引入后路径会发生变化，并且在本页面也引入
+		</h3>
+		
+		<hr />
+		
+		<h1>总结：</h1>
+		<p>修改添加js的方法：</p>
+		<p>1，在本文件下添加，必须使用$(document).on('click','dom', function(){}) 格式</p>
+		<p>2，使用外部js，只需要在本页面或者源文件之一加载js文件，否则会执行两次</p>
+		<p>3，想要动态修改 引入部分的内容，只能在外部js中</p>
+		
+		
+		<hr />
+		<hr />
+		<hr />
+		<div id="footer"></div>
+		
+		
+	</body>
+</html>
+
+
+<script type="text/javascript"> 
+	$(function(){
+		$('#header').load('01header.html .header')
+		
+		$('#p02').load('02.html')
+		
+		$('#footer').load('01footer.html')
+		
+		
+	
+	
+		$(document).on('click', '.btn3', function(){
+			alert('本文件用 $(document).on 格式添加 js ')
+			$(this).append('00000000000')
+		})
+
+
+		
+	})
+	
+
+</script>

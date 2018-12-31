@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<p>三秒后自动播放</p>
+		<audio id="audio1" src="超神学院动画 - 战争之后.mp3" controls>
+			你的浏览器不支持audio，请升级
+		</audio>
+		
+		<script>
+		  	timer=setTimeout(function(){
+		  		console.log('三秒了')
+		  		$('#audio1').get(0).play()
+			},3000)
+			  
+		</script>
+		
+	</body>
+</html>
+ 

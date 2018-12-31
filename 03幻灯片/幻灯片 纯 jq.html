@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+<!--自动检测屏幕大小-->		
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">		
+		<script src="../js/jquery.min-1.8.js"></script>
+		
+		<title></title>
+		
+		<style type="text/css">
+			.container{
+				width: 1140px;
+				padding: 0 15px;
+				margin: 0 auto;
+			}
+			.slide{
+				height: 300px;
+				overflow: hidden;
+				position: relative;
+			}
+			.slide img{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<h3 style="text-align: center;">纯 jq 下的幻灯片，淡入淡出效果</h3>
+		
+		<!--图片顺序颠倒排放-->
+		<div class="container">
+			<div class="slide" id="mycarousel">
+				<img src="img/4.jpg"/>
+				<img src="img/3.jpg"/>
+				<img src="img/2.jpg"/>
+				<img src="img/1.jpg"/>
+			</div>
+			
+		</div>
+		<!--程序每过（3000）重新走一次-->		
+		<script> 
+			var timer = null;
+			
+			function autoPlay(){
+				timer=setInterval(function (s){
+					imgs=$('.slide img');  /*图片定义为imgs*/
+					
+					imgs.eq(3).stop().fadeOut(1000,function(){  /*最后一个图片先显示*/
+						$(this).show().prependTo('.slide');    
+						/*显示之后移动到幻灯片最上面，新的最后一个图片显示，往复循环*/
+																						
+					})
+				},3000) 
+			};
+			autoPlay();       /*autoplay 自动开始++++++++++++++++++++++++++++++++++++++*/
+			
+			$('.container').hover(function(){
+				clearInterval(timer)
+			},autoPlay)
+	
+		</script>
+
+ 
+			
+<!--*************************************************************************************-->		
+
+<!--*************************************************************************************-->		
+		
+		
+	</body>
+	
+</html>

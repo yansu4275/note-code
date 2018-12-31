@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			li{
+				background: #ccc;
+			}
+		</style>		
+	</head>
+	<body>
+		<h3>貌似用处不大</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		attachEvent($('li'),function(){
+			var event = event||window.event
+			event.preventDefault()
+			$(this).remove()
+		})
+		function attachEvent(src,cb){
+			$(src).bind('touchstart', function(){
+				$(this).data('touchon', true)
+			})
+			$(src).bind('touchend', function(){
+				if ( $(this).data('touchon', true) ) {
+					cb.bind(this)()
+				}
+				$(this).data('touchon', false)
+			})
+		}
+	})
+</script>

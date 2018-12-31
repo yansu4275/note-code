@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时间插件</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquer_shijian.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/shijian.css"/>
+		
+		
+		
+		<style type="text/css">
+			.box{
+				text-align: center;
+			}
+			p{
+				padding-top: 50px;
+			}
+			.jsbox{
+				max-width: 500px;
+				text-align: left;
+				margin: 0 auto;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<input type="text" name="" id="" value=""  class="aaa"/>
+		
+		<script type="text/javascript">
+			$('.aaa').shijian({
+				type: "time",
+			    Format: "yyyy-mm-dd", //显示时间格式//yyyy表示年份 ，mm月份 ，dd天数  支持三种格式 dd-mm-yyyy ，mm-dd-yyyy yyyy-mm-dd
+			    Order: 'yymmdd',
+			    width: 60, //默认宽度
+			    height: 32, //默认数值高度
+			    Year: true, //是否显示年//
+			    Month: true, //是否显示月//
+			    Day: true, //是否显示日//
+			    Hour: true, //是否显示小时
+			    Minute: true, //是否显示分钟
+			    Seconds: false, //是否显示秒
+			    yyyy: "0000", //当前显示年
+			    mm: "00", //当前显示月
+			    dd: "00", //当前显示日
+			    h: "00", //当前显示小时
+			    m: "00", //当前显示分
+			    s: "00", //当前显示秒
+			    yearText: "年", //顶部时间 年单位 文字
+			    monthText: "月", //顶部时间 月单位 文字
+			    dayText: '日', //顶部时间 日单位 文字
+			    hourText: '时', //顶部时间 时单位 文字
+			    minuteText: '分', //顶部时间 分单位 文字
+			    secondsText: '秒', //顶部时间 秒单位 文字
+			    okText: "确认", //按钮确认键文字
+			    cancelText: "取消", //按钮取消键文字
+			    showNowTime: true, //是否默认显示当前时间
+			    alwaysShow: false, //是否默认直接显示插件
+			    timeElm: null, // 需要在哪个元素中展示元素需要定位  可使用字符串的形式（"$(sjObj).prev()" sjObj表示当前时间对象
+			    onfun: function() { //取消改变时间时候执行事件
+			    },
+			    okfun: function() { //确认时间时候执行事件
+			 
+			    },
+			})
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="box">
+			<p>默认点击显示</p>
+			<input type="text"  id="input1" value=""/>
+			<div class="jsbox">
+				<pre class="prettyprint">
+				//基本使用, 默认当前年份加十年，不显示秒
+				$("#input1").shijian();
+				</pre>			
+			</div>	
+			
+			
+			
+			
+			
+			
+			<p>直接在页面显示</p>
+			<div class="time-box" style="position: relative;width: 200px;height: 200px;margin: 0 auto;">
+				
+			</div>
+			<input type="text"  id="input2" value=""/>
+			<div class="jsbox">
+				<pre class="prettyprint">
+				//直接在页面显示 
+				$("#input2").shijian({
+					showNowTime:false,
+					Year:false,//是否显示年
+					Month:false,//是否显示月
+					Day:false,//是否显示日
+					h:"00",
+					m:"01",
+					alwaysShow:true,
+					timeElm:$(".time-box"),//sjObj表示当前对象  也可以使用 sjObj  用字符串 
+					//timeElm:"sjObj.prev()",// 也可以使用 sjObj  用字符串  sjObj 表示当前input
+				})
+				</pre>			
+			</div>		
+			
+			
+			
+			
+			
+			
+			
+			<p>选择需要显示的</p>
+			<input type="text"  id="input3" value=""/>
+			<div class="jsbox">
+				<pre class="prettyprint">
+				//选择需要显示的 
+				$("#input3").shijian({
+					y:-10,//当前年份+10 
+					Hour:false,//是否显示小时
+				 	Minute:false,//是否显分钟
+				})
+				</pre>
+			</div>			
+			
+			
+			
+			
+			
+			
+			<p> 自定义起始年份 </p>
+			<input type="text"  id="input4" value="1989/01/01"/>
+			<div class="jsbox">
+				<pre class="prettyprint">
+				//可直接在 input 的 value 填写默认展示的时间， 不过需要在指定范围内
+				 $("#input4").shijian({
+				 	startYear:1989,
+				 	val:1989,
+				 	endYear:2017,
+				 	Hour:false,//是否显示小时
+				 	Minute:false,//是否显分钟
+				})
+				</pre>
+			</div>
+			
+		</div>
+		
+	</body>
+</html>
+<!--***********************************************************************-->
+
+	<script type="text/javascript">
+		//默认点击显示
+		$("#input1").shijian()
+		//直接在页面显示
+		$("#input2").shijian({
+			showNowTime:false,
+			Year:false,//是否显示年//
+            Month:false,//是否显示月//
+            Day:false,//是否显示日//
+            h:"00",
+            m:"01",
+			alwaysShow:true,
+			timeElm:$(".time-box"),//sjObj表示当前对象  也可以使用 sjObj  用字符串 
+			//timeElm:"sjObj.prev()",// 也可以使用 sjObj  用字符串  sjObj 表示当前input
+		})
+		//选择需要显示的
+		$("#input3").shijian({
+			y:-10,//当前年份+10
+			Hour:false,//是否显示小时
+ 			Minute:false,//是否显分钟
+		})
+		$("#input4").shijian({
+			startYear:1989,
+			val:1989,
+			endYear:2017,
+			Hour:false,//是否显示小时
+ 			Minute:false,//是否显分钟
+		})
+	</script>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

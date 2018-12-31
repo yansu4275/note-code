@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-3.2.0.min.js"></script>
+		<style type="text/css">
+			.carousel{
+				width: 1200px;
+				height: 500px;
+				background: orange;
+				margin: auto;
+				position: relative;
+			}
+			.list{
+				width: 5000px;
+				height: 450px;
+				background: olive;
+				position: absolute;
+			}
+			.couBox{
+				float: left;
+				background: #C9C9C9;
+				margin: 0 41px;
+			}
+			.couBoxs{
+				height: 400px;
+				background: #666666;
+				float: left;
+				outline: 2px #C9302C solid;
+			}
+			.paging{
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+			}
+			.paging span{
+				padding: 10px;
+				margin: 20px;
+				background: lightcoral;
+			}
+			
+			.paging span.pagingActive{
+				background: #FF0000;
+			}
+			
+			.control{
+				position: absolute;
+				bottom: 0px;
+				left: 300px;
+			}
+			.conLeft,.conlRight{
+				padding: 10px;
+				background: powderblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="carousel">
+			<div class="list">
+				<div class="couBoxs">
+					<div class="couBox">
+						<img src="img/8001.png" alt="" />
+					</div>
+					
+					<div class="couBox">
+						<img src="img/8002.png"/>
+					</div>
+					
+					<div class="couBox">
+						<img src="img/8003.png" alt="" />
+					</div>
+					
+				</div>
+				
+				
+				<div class="couBoxs">
+					<div class="couBox">
+						<img src="img/8001.png" alt="" />
+					</div>
+					
+					<div class="couBox">
+						<img src="img/8002.png"/>
+					</div>
+					
+					<div class="couBox">
+						<img src="img/8003.png" alt="" />
+					</div>
+					
+				</div>
+
+				<div class="couBoxs">
+					<div class="couBox">
+						<img src="img/8001.png" alt="" />
+					</div>
+					
+					<div class="couBox">
+						<img src="img/8002.png"/>
+					</div>
+					
+					<div class="couBox">
+						<img src="img/8003.png" alt="" />
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<div class="paging">
+				<span class="pagingActive">1</span>
+				<span>2</span>
+				<span>3</span>
+			</div>
+			
+			<div class="control">
+				<span class="conLeft"><<</span>
+					
+				<span class="conlRight">>></span>	
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
+<script type="text/javascript">
+	s=0;
+	v = -$('.couBoxs').width();
+	
+	
+//	************************************************************指示灯随左右按钮亮
+	function setLight(){
+		n=s/v;
+		$('.paging span').eq(n).addClass('pagingActive')
+		$('.paging span').not($('.paging span').eq(n)).removeClass('pagingActive')
+	}
+	
+	
+//	**************************************************************向左按钮
+	$('.conlRight').click(function(){
+		s+=v;
+		if(s<=v*2){
+			s=v*2;
+		}
+		$('.list').stop().animate({
+			'left':s+'px' 
+		},500)
+		
+		setLight()
+	});
+	
+	
+//	*************************************************************向右按钮
+	$('.conLeft').click(function(){
+		s-=v;
+		if(s>=0){
+			s=0 
+		}
+		$('.list').stop().animate({
+			'left':s+'px' 
+		},500)
+		
+		setLight()
+	});
+	
+//	***********************************************************点击指示灯效果
+	$('.paging span').click(function(){
+		$(this).addClass('pagingActive')
+		$('.paging span').not($(this)).removeClass('pagingActive')
+		
+		reIdx=$(this).index('.paging span')
+		
+		s=reIdx*v;
+		
+		$('.list').stop().animate({
+			left:s+'px'
+		})
+	})
+</script>

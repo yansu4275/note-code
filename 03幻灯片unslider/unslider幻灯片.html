@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-3.2.0.min.js"></script>
+		<script src="unslider.min.js"></script>
+		<!--<script src="jquery.event.swipe.js"></script>-->
+		
+		<style type="text/css">
+			/*幻灯片样式公共部分*/
+			html, body{
+				font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+			}
+			ul,ol{ 
+				padding: 0;
+			}
+			.banner{ 
+				position: relative; 
+				overflow: auto; 
+				text-align: center;
+			}
+			.banner li { 
+				list-style: none; 
+			}
+			
+			.banner ul li { 
+				float: left; 
+			}
+			
+			/*图片主体部分*/
+			#b06 { 
+				width: 500px;
+			}
+			/*指示灯*/
+			#b06 .dots { 
+				position: absolute; 
+				left: 0; 
+				right: 0; 
+				bottom: 30px;
+			}
+			#b06 .dots li { 
+				display: inline-block; 
+				width: 20px; 
+				height: 20px; 
+				border-radius: 10px; 
+				margin: 0 5px; 
+				text-indent: -999em; 
+				border: 2px solid #fff; 
+				cursor: pointer; 
+				opacity: .4; 
+				-webkit-transition: background .5s, opacity .5s; 
+				-moz-transition: background .5s, opacity .5s; 
+				transition: background .5s, opacity .5s;
+			}
+			#b06 .dots li.active {
+				background: #fff;
+				opacity: 1;
+			}
+			#b06 .arrow { 
+				position: absolute; 
+				top: 150px;
+			}
+			#b06 #al { 
+				left: 15px;
+			}
+			#b06 #ar { 
+				right: 15px;
+			}
+
+
+		</style>
+		
+	</head>
+	<body>
+		<p>多个幻灯片时修改id=b06</p>
+		
+		<div class="banner" id="b06">  
+		    <ul>  
+		        <li><img class="sliderimg" src="../03幻灯片/img/1.jpg" width="100%"></li>  
+		        <li><img class="sliderimg" src="../03幻灯片/img/2.jpg" width="100%"></li>  
+		        <li><img class="sliderimg" src="../03幻灯片/img/3.jpg" width="100%"></li>  
+		        <li><img class="sliderimg" src="../03幻灯片/img/4.jpg" width="100%"></li>  
+		    </ul>  
+		    
+		    <a href="javascript:void(0);" class="unslider-arrowb06 prev">
+		    	<img class="arrow" id="al" src="arrowl.png" alt="prev" width="20" height="35">
+		    </a>  
+		    
+		    <a href="javascript:void(0);" class="unslider-arrowb06 next">
+		    	<img class="arrow" id="ar" src="arrowr.png" alt="next" width="20" height="35">
+		    </a>  
+		    
+		</div>  
+		
+	</body>
+</html>
+
+<script type="text/javascript">
+	    var unsliderb06 = $('#b06').unslider({  
+	    	speed: 300,               //  切换速度
+		    delay: 3000,              //  停留时间
+		    complete: function() {},  //  回调函数
+		    keys: true,               //  是否支持键盘控制
+		    dots: true,               //  指示灯是否显示
+		    fluid: false              //  是否支持响应式
+	    }),  
+	  
+	    datab06 = unsliderb06.data('unslider');  
+	  
+	    $('.unslider-arrowb06').click(function() {  
+	        var fn = this.className.split(' ')[1];  
+	        datab06[fn]();  
+	    });  
+	    
+	  
+
+</script>

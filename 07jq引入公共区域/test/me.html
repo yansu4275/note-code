@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>把头部和尾部通过jquery加载进页面</title>    
+        <style>
+            body{text-align: center;}
+        </style>
+    </head>
+
+    <body>
+        <!--放一个id为header的div,把header.html加载到这块-->
+        <div id="header"></div>
+
+        <div class="main" style="width:100%;padding:100px 0;background:#dcdcdc;">
+            <h1>我是主体</h1>
+        </div>
+
+        <!--放一个id为footer的div,把footer.html加载到这块-->
+        <div id="footer"></div>
+
+        <!--利用jquery的load()方法把header.html和footer.html加载进来     -->
+        <script type="text/javascript" src="js/jquery.min-1.8.js" ></script>
+        <script>
+            $(function() {
+                $('#header').load('common/header.html'); 
+                $('#footer').load('common/footer.html');
+            })
+        </script>
+    </body>

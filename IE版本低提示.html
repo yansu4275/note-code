@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.1.min.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<h1 class="aaa"></h1>
+		<h1 class="bbb"></h1>
+		<hr />
+		<p>注：IE11 和 火狐 不区分</p>
+	</body>
+</html>
+<script type="text/javascript">  
+/*判断浏览器版本是否过低*/  
+	$(document).ready(function() {
+		// 浏览器名称
+      	var b_name = navigator.appName;  
+      	
+      	// 浏览器版本号
+      	var b_version = navigator.appVersion;  
+      	
+      	var version = b_version.split(";");  
+      	
+      	var trim_version = version[1].replace(/[ ]/g, ""); 
+  		// 判断是不是ie浏览器
+      	if (b_name == "Microsoft Internet Explorer") {  
+            /*如果是IE6或者IE7*/  
+           	if (trim_version == "MSIE8.0" || trim_version == "MSIE7.0" || trim_version == "MSIE6.0") {  
+  				$('.aaa').append("IE浏览器版本低于IE9，请到指定网站去下载相关版本")
+               
+        	}else{
+  				$('.aaa').append("IE浏览器版本大于9.0")
+        	}
+           	
+        }
+  		
+	});  
+  
+  //*****************************************************
+  // 写在 $(document).ready 中时火狐没效果
+	nav=navigator.userAgent;
+	ntype=nav.match(/chrome|firefox|trident/i);
+	switch(ntype[0]){
+		case 'Chrome':
+			$('.bbb').html('这是谷歌浏览器')
+			break;
+		case 'Firefox':
+			$('.bbb').html('这是火狐浏览器')
+			break;	
+		case 'Trident':
+			$('.bbb').html('这是IE浏览器')
+			break; 
+	}
+</script>  
+<script type="text/javascript">
+	
+</script>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>把头部和尾部通过jquery加载进页面</title>    
+        <style>
+            body{text-align: center;}
+            #menu_c{
+            	color: blue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <div class="main" style="width:100%;padding:100px 0;background:#dcdcdc;">
+            <h1>我是主体</h1> 
+        </div> 
+
+        <div id="footer"></div> 
+ 
+<script type="text/javascript" src="js/jquery.min-1.8.js" ></script>
+        <script>
+            $(function() {
+                $('#header').load('common/header.html');
+                $('#footer').load('common/footer.html');
+                
+                
+                
+                
+            })
+        </script>
+    </body>

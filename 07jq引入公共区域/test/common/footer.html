@@ -1,0 +1,19 @@
+<div>
+	<span id="menu_a">菜单A</span>
+	&nbsp;|&nbsp;
+	<span id="menu_b">菜单B</span>
+	&nbsp;|&nbsp;
+	<span id="menu_c">菜单C</span>
+</div>
+<script src="../js/jquery.min-1.8.js"></script>
+        <script>
+            $(function() {
+                var pathname=window.location.pathname;
+//				console.log(pathname);
+				if(pathname=="/test/test.html"){
+					$('#menu_a').css("color","red");
+				}else if(pathname=="/test/me.html"){
+					$('#menu_c').css("color","red");
+				}
+            })
+        </script>

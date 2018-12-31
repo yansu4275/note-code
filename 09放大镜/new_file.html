@@ -1,0 +1,53 @@
+
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/jzoom.js"></script>
+	<title></title>
+	<style type="text/css">
+		.jzoom {
+		  	width: 500px;
+		  	height: 500px;
+		  	border: 3px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div class="">
+		<div class="jzoom">
+			<img src="img/1.jpg">
+	    </div>
+	</div>
+	<p>---width：	默认值为400，放大镜div的宽度。</p>
+	<p>---height：	默认值为400，放大镜div的高度。</p>
+	
+	<p>---position：默认值为"right"，放大镜div相对于原图的位置，可以设置为"top"、"bottom"、"left"。</p>
+	<p>---offsetX：	默认值为20，放大镜div相对于原图的水平偏移，不能为负值。</p>
+	<p>---offsetY：	默认值为0，放大镜div相对于原图的垂直偏移，不能为负值。</p>
+	<p>---opacity：	默认值为0.6，镜片div的透明度。</p>
+	<p>---bgColor：	默认值为#fff，镜片div的背景色。</p>
+	<p>---loading：	默认值为Loading...，加载图片时显示的文字，水平垂直居中。</p> 
+	<p>---suffixName：默认值为_big，大图后缀名。</p>
+	<p>---imgType：	默认值为原图格式，大图的格式，建议与原图相同。</p>	
+
+ 
+	  
+	<script>
+        $('.jzoom').jzoom({
+        	//***************************镜片
+        	bgColor: "#ccc", 
+//      	opacity: 0.1,
+        	width:400,
+        	height:200,
+//      	
+//      	offsetX: 0,
+//      	offsetY: 20,
+        	
+        }); 
+    </script>
+</body>
+</html> 

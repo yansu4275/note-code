@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			.header{
+				color: red;
+			}
+		</style>
+		
+		
+	</head>
+	<body>
+		<button>按钮</button>		
+		
+		<div id="header"></div>
+		
+		<div id="footer"></div>
+	</body>
+</html>
+
+
+<script src="../../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+//		$.ajax( {
+//	        url: '01header_ajax.html', //这里是静态页的地址
+//	        type: "GET", //静态页用get方法，否则服务器会抛出405错误
+//	        dataType:'html',
+//	        success: function(data){
+//	            var result = $(data).find('.header');
+//	            
+//	            $("#header").html(result);
+//	        }
+//		});
+		
+		 $.ajax({  
+            url: '01header_ajax.html',  
+            type: "GET",  
+	        dataType: "html",  
+            success: function (data) {  
+            	console.log(data)
+        		
+                var html = $(data);  
+                $("#header").html(html);  
+            }  
+        });  
+		
+		
+		
+		
+</script>

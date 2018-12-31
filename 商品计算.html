@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<h2>单价---------------数量--------------总价</h2>
+	
+	<div class="box">
+        <input type="text" class="aaa">×
+        <input type="text" class="bbb"/>
+        = <span class="ccc"></span>
+	</div>
+	
+	<button>添加</button>
+	<h1>合计：<span class="heji"></span></h1>
+</body>
+</html>
+    <script>
+	    $(document).keyup(function(){
+			
+//			var danjia = []; 	// 定义一个 单价 空数组
+//			var shuliang = []; 	// 定义一个 数量 空数组
+//			var zongjia = [];	// 定义一个 总价 空数组
+//	    	var txt = $('.aaa'); // 获取所有单价表单
+//	    	
+//	    	var heji = 0;
+//	    	for (var i = 0; i < txt.length; i++) {
+//	    	    danjia.push(txt.eq(i).val()); 			// 将文本框的值添加到数组中
+//	    	    
+//	    	    shuliang.push(txt.eq(i).next().val()); 	// 将文本框的值添加到数组中
+//	    	    
+//	    	    zongjia[i] = danjia[i] * shuliang[i]	// 计算每组总价
+//	    	    
+//	    	    // 总价写入***********************************************************
+//	    	    $('.ccc').eq(i).each(function(){
+//	    	    	$(this).text(zongjia[i])
+//	    	    })
+//	    	    
+//	    	    heji += zongjia[i]						// 计算合计
+//	    	}
+//			
+//			// 合计写入***********************************************************
+//			$('.heji').text(heji)
+
+			
+	    	var heji = 0;
+			$('.ccc').each(function(i){
+				$('.ccc').eq(i).text($('.aaa').eq(i).val() * $('.bbb').eq(i).val());
+				heji += +$('.ccc').eq(i).text()
+			})
+			
+			$('.heji').html(heji)
+
+	    })
+	    
+	    //添加
+	    $('button').click(function(){
+	    	$(this).before($('.box').eq(0).clone())
+			$('.box').eq(-1).find('input').each(function(){
+				$(this).val('')
+			}).siblings('span').each(function(){
+				$(this).text('')
+			})
+		})
+    </script>

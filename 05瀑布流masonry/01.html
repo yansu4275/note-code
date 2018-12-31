@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="js/masonry-min.js"></script>
+		<style type="text/css">
+			.container-fluid {
+			  padding: 20px;
+			  }
+			.box {
+			  /*margin-bottom: 20px;*/
+			  float: left;
+			  width: 220px;
+			  outline: 1px red solid;
+			  }
+			  .box img {
+			  max-width: 100%
+			}
+		</style>
+	</head>
+	<body>
+		<div id="masonry" class="container-fluid">
+		  <div class="box" style="width: 100px;"><img src="../img/0.png"></div>
+		  <div class="box"><img src="../img/1.png"></div>
+		  <div class="box"><img src="../img/2.png"></div>
+		  <div class="box"><img src="../img/8001.png"></div>
+		  <div class="box"><img src="../img/8002.png"></div>
+		  <div class="box"><img src="../img/8003.png"></div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+	    var $container = $('#masonry');
+	    $container.imagesLoaded(function() {
+	        $container.masonry({
+	                itemSelector: '.box',	/*作用的 div 类名*/
+	                gutterWidth:20,			/*块元素之间的间距*/
+	                isAnimated: true,		/*代码可以打开动画选项*/
+					isFitWidth: true,		/*自适应宽度，响应式*/
+	            });
+	     });
+	})
+</script>

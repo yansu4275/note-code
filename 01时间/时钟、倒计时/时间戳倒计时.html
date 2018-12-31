@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<style type="text/css">
+			.prolist li{
+				float:left;
+				width:220px;  
+				margin:10px 25px 0 0; 
+				font-size:14px; 
+				position:relative;
+			}
+            .prolist li img{
+            	width:220px; 
+            	height:330px;
+            }
+            .showtime{
+            	position:absolute; 
+            	bottom:20px; 
+            	height:24px; 
+            	line-height:24px; 
+            	background:#333; 
+            	color:#fff; 
+            	opacity:.6; 
+            }
+
+		</style>
+		
+	</head>
+	<body>
+		
+		我们为三件商品分别定义了结束时间戳，即class为“.endtime”属性value值。
+	<ul class="prolist clearfix"> 
+    	<li> 
+      		<img src="img/8001.png" /> 
+      		韩版新款印花夏装 
+      		<p class="endtime showtime" value="2000000000"></p> 
+    	</li> 
+    	
+	    <li> 
+	        <img src="img/8002.png" /> 
+	      	夏装新款两件套 
+	    	<p class="endtime showtime" value="1452860800"></p>
+	    </li> 
+	    
+	    <li> 
+      		<img src="img/8003.png" /> 
+      		春装女装新款 韩版 
+       		<p class="endtime showtime" value="1453860800"></p> 
+     	</li> 
+	</ul>
+<!--jQuery
+每个商品定时100毫秒执行一次setInterval里面的代码。接着each()方法遍历计算每个商品的倒计时，单位为天、小时、分、秒。-->
+<script type="text/javascript">
+	
+$(function() { 
+	var time_current = (new Date()).valueOf(); //获取当前时间 
+    var dateTime = new Date(); 
+    var difference = dateTime.getTime() - time_current; 
+ 
+    setInterval(function() { 
+        $(".endtime").each(function() { 
+            var obj = $(this); 
+            var endTime = new Date(parseInt(obj.attr('value')) * 1000); 
+            var nowTime = new Date(); 
+            var nMS = endTime.getTime() - nowTime.getTime() + difference; 
+            var myD = Math.floor(nMS / (1000 * 60 * 60 * 24)); //天
+            var myH = Math.floor(nMS / (1000 * 60 * 60)) % 24; //小时
+            var myM = Math.floor(nMS / (1000 * 60)) % 60;  //分 
+            var myS = Math.floor(nMS / 1000) % 60;  //秒
+            var myMS = Math.floor(nMS / 100) % 10; //毫秒
+            if (myD >= 0) { 
+                var str = myD + "天" + myH + "小时" + myM + "分" + myS + "." + myMS + "秒"; 
+            } else { 
+                var str = "已结束！"; 
+            } 
+            obj.html(str); 
+        }); 
+    }, 
+    100); 
+});
+</script>
+		
+		
+	</body>
+</html>

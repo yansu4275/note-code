@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">		
+		<title></title>
+		<script src="../js/jquery-3.2.0.js"></script>
+		<style type="text/css">
+			.aaa{
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.zhezhao{
+				width: 100%;
+				height: 100%;
+				background: #CCCCCC;
+				opacity: 0.8;
+			}
+			.modal_content{
+				position: fixed;
+				top: 0;
+				width: 100%;
+				height: 100%;
+			}
+			iframe{
+				border: none;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<p>ifarme 引入页面</p>
+		
+		<button>按钮</button>
+		
+		
+		<div class="aaa">
+			<div class="zhezhao"></div>
+			<div class="modal_content">
+				<iframe id="iframe1" src="new_file.html" scrolling="no" onload="this.height=100" frameborder="0">
+				</iframe>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$('button').click(function(){
+		$('.aaa').show()
+	})
+	
+	$('.aaa').click(function(){
+		$('.aaa').hide()
+	})
+	//******************************************************
+	
+	
+//	function setIframeHeight(iframe) {
+//	if (iframe) {
+//	var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+//	if (iframeWin.document.body) {
+//	iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+//	}
+//	}
+//	};
+//	
+//	window.onload = function () {
+//	setIframeHeight(document.getElementById('iframe1'));
+//	};
+
+</script>
+
+
+<script type="text/javascript">
+  // 计算页面的实际高度，iframe自适应会用到
+//function calcPageHeight(doc) {
+//    var cHeight = Math.max(doc.body.clientHeight, doc.documentElement.clientHeight)
+//    var sHeight = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight)
+//    var height  = Math.max(cHeight, sHeight)
+//    return height
+//}
+//var ifr = document.getElementById('iframe1')
+//ifr.onload = function() {
+//    var iDoc = ifr.contentDocument || ifr.document
+//    var height = calcPageHeight(iDoc)
+//    ifr.style.height = height + 'px'
+//}
+</script>

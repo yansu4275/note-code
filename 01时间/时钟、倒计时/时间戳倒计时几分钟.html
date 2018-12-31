@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.0.min.js"></script>
+	</head>
+	<body>
+		
+		<h1>倒计时结束后body变色</h1>
+		
+		<h1>
+			<span class="mm"></span>分 
+			<span class="ss"></span>秒
+		</h1>
+		
+	</body>
+</html>
+<script type="text/javascript">
+		var start_time = new Date();
+        start_time = start_time.getTime();//获取开始时间的毫秒数
+        
+        
+//      倒计时秒数
+        var left_secs=3;
+        
+        
+        // 根据倒计时秒数设置默认的起始时间
+        var default_mm = Math.floor(left_secs / 60);
+        var default_ss = left_secs%60;
+        
+        if(default_mm<10){
+        	default_mm = '0' + default_mm
+        }
+		if(default_ss<10){
+        	default_ss = '0' + default_ss
+        }        
+        
+        $('.mm').html(default_mm)
+        $('.ss').html(default_ss)
+        
+        
+//      var downTime = null; 
+        function settime() { //倒计时
+            //倒计时实时结束时间
+            var end_time = new Date();
+            end_time = end_time.getTime();
+            //得到剩余时间
+            var dtime = left_secs - Math.floor((end_time - start_time) / 1000);
+        
+        	// 小于 10 时添加 0
+            var countdown_min = Math.floor(dtime / 60); //剩余的分
+            var countdown_sec = dtime % 60; //剩余的秒
+
+            if(countdown_min<10){
+                countdown_min='0' + countdown_min;
+            }
+            
+            if(countdown_sec<10){
+                countdown_sec='0' + countdown_sec;
+            }
+
+            $('.mm').text(countdown_min);
+            $('.ss').text(countdown_sec);
+
+
+			// 执行完毕后关闭定时器
+            if (countdown_min == 0 && countdown_sec == 0) {
+            	
+                clearInterval(downTime);
+                $('body').css({'background':'#ccc'})
+            }
+       		
+        }
+        
+            //settime();
+	    downTime=setInterval(function() {
+	        settime(); 
+	    },1000);
+</script>

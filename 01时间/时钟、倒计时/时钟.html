@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		
+	</head>
+	<body>
+		
+    <div id="time1" style="color: red;"></div>
+    <div id="time2" style="color: red;"></div>
+    <div id="time3" style="color: red;"></div>
+    <div id="time4" style="color: red;"></div>
+    <div id="time5" style="color: red;"></div>
+	<script>
+		//toLocaleString() 方法可根据本地时间把 Date 对象转换为字符串，并返回结果。
+		//charAt() 方法可返回指定位置的字符。第一个字符位置为 0, 第二个字符位置为 1,以此类推.
+		//getDay() 方法可返回一周（0~6）的某一天的数字。
+		
+		
+		//.toLocaleString()
+		setInterval("time1.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);   //延迟1秒钟后显示
+		
+		//.toString()
+		setInterval("time2.innerHTML=new Date().toString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());");   
+		
+		//.toLocaleString('chinese',{hour12:false})
+		setInterval("time3.innerHTML=new Date().toLocaleString('chinese',{hour12:false})+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);  
+		
+		setInterval("time4.innerHTML=new Date().toLocaleString('chinese',{hour12:false});",1000);  
+		
+		setInterval("time5.innerHTML=new Date().toLocaleString('chinese',{hour24:false});",1000);  
+	</script>
+	
+	
+ </body>
+</html>

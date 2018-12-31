@@ -1,0 +1,38 @@
+<meta charset="UTF-8">
+	<script src="js/jquery-3.2.0.js"></script>
+	<!--<script src="01header.js"></script>-->
+	
+	<style type="text/css">
+		p{
+			color: blue;;
+		}
+	</style>
+		<div class="header">
+			<p>
+				header 原色是蓝色
+				<br />
+				<button class="btn1">外部引入的js</button>
+				<br />
+				<button class="btn2">源文件的js</button>
+				<br />
+				<button class="btn3">写在本文件的js</button>
+				
+				<p class="p1">这是原内容</p>
+			</p>
+			
+		</div>
+		<script type="text/javascript">
+//			$(function(){
+//				$(document).on('click', '.header p',function(){
+//					console.log('33333')
+//				})
+//			})
+
+			$('.btn2').click(function(){
+				alert('源文件的 js，写在源文件里')
+			})
+			
+			
+
+
+		</script>

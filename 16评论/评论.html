@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>评论</title>
+<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+</style>
+</head>
+<body>
+	<p>页数：
+		<button>1</button>
+	</p>
+	
+	<ul>
+		<!--<li>
+			<p>内容</p>
+			<p>时间：<span>00000</span></p>
+			<p>点赞：<span>0</span></p>
+			<p><button>删除</button></p>			
+			<hr />
+		</li>-->
+	</ul>
+</body>
+</html>
+
+<script src="../js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	// 获取一页的数据
+//	function aaa(n){
+//				
+//	}
+		$.ajax({
+			url: 'pinglun.json',
+			type: 'get',
+			dataType: 'json',
+			async:true,
+            success:function(result){
+				for(let i=0; i<result.length; i++){
+					let li = document.createElement('li')
+					li.innerHTML=`<li>
+										<p>${result[i].text}</p>
+										<p>时间：<span>${result[i].time}</span></p>
+										<p>点赞：<span>${result[i].zan}</span></p>
+										<p><button>删除</button></p>			
+										<hr />
+									</li>`
+					$('ul').append(li)	
+					
+				}
+            },
+            error:function(err){
+            	console.log('报错')
+            }
+		})			
+</script>

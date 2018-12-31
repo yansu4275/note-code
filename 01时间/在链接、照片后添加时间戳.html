@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="../img/8003.png"/>
+		
+		<br />
+		
+		<a href="时间戳.html">0000000000</a>
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	// 当前时间戳
+	var time = (new Date()).getTime()
+	
+	// 图片链接
+	var src =  $('img').attr('src')
+	$('img').attr({'src': src + '?time=' + time})
+	
+	// 跳转链接
+	var href = $('a').attr('href')
+	$('a').attr({'href': href + '?time=' + time})
+</script>

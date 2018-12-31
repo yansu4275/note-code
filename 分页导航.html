@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min-1.8.js"></script>
+		<style type="text/css">
+			
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.aaa{
+				width: 1200px;
+				height: 500px;
+				background: #C9C9C9;
+				margin: auto;
+			}
+			.xuanjiu{
+				list-style: none;
+				position: relative;
+			}
+			.xuanjiu li{
+				width: 200px;
+				height: 50px;
+				background: #FFFFFF;
+			}
+			.menuBox{
+				width: 500px;
+				height: 500px;
+				background: orange;
+				position: absolute;
+				left: 200px;
+				top: 0px;
+				display: none;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="aaa">
+			<ul class="xuanjiu">
+				<li>
+					<div class="catItem">1111</div>
+					<div class="menuBox">1111111</div>
+				</li>
+				<li>
+					<div class="catItem">2222</div>
+					<div class="menuBox">2222222</div>
+				</li>
+				<li>
+					<div class="catItem">3333</div>
+					<div class="menuBox">3333333</div>
+				</li>
+				<li>
+					<div class="catItem">4444</div>
+					<div class="menuBox">4444444</div>
+				</li>
+			</ul>
+		</div>
+	
+					
+		<script>
+			$('.xuanjiu li').hover(
+				function(){
+				$(this).css({'background':'red'}).siblings().css({'background':'#ffffff'});;
+				$(this).find('.menuBox').show()
+			},
+				function(){
+					$(this).css({'background':'#ffffff'})
+					$('.menuBox').hide();
+			})
+		</script>
+	</body>
+</html>

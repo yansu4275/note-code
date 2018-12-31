@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">		
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="js/hammer.min.js"></script>
+		
+	</head>
+	<body>
+		<!--<button id="aaa">0000</button>-->
+		<p id="aaa">111111111</p>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	var aaa = new Hammer(document.getElementById("aaa"));
+	aaa.on('tap', function(){
+		console.log(1)
+	})
+	
+</script>  

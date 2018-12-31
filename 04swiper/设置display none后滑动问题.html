@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>observer:true,//修改swiper自己或子元素时，自动初始化swiper</h3>
+		<h3>observer:true,//修改swiper自己或子元素时，自动初始化swiper</h3>
+				
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="../img/8001.png"/>
+				</div>
+				<div class="swiper-slide">
+					<img src="../img/8001.png"/>
+				</div>
+				<div class="swiper-slide">
+					<img src="../img/8001.png"/>
+				</div>
+			</div> 
+			
+			<!--分页器-->
+			<div class="swiper-pagination" style="color: red;text-align: right; left: -9px;"></div>
+							
+		</div>		
+	</body>
+</html>
+<script src="jquery-1.11.1.min.js"></script>
+<script src="swiper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="swiper.min.css"/>
+<script type="text/javascript">
+	var mySwiper = new Swiper ('.swiper-container',{
+	 	//分页器，默认圆点
+	 	pagination: {
+		el: '.swiper-pagination',
+		//分数式
+		type: 'fraction',
+		},
+		loop:true,
+		
+		// 设置display:none 之后轮播图不能使用
+		observer:true,//修改swiper自己或子元素时，自动初始化swiper
+	  	observeParents:true//修改swiper的父元素时，自动初始化swiper
+	})
+</script>
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/jquery.waterfall.min.js"></script>
+		
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#demo {
+			  	margin: auto;
+			  	position: relative;
+			}
+			  
+			.box {
+			  	float: left;
+			  	padding: 10px;
+			  	border: 1px solid #ccc;
+			  	background: #f7f7f7;
+			  	box-shadow: 0 0 8px #ccc;
+			}
+			
+			.box img { 
+				width: 200px; 
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="demo">
+			<div class="box" style="height: 500px;"><img src="img/8001.png"/></div>
+			<div class="box"><img src="../img/0.png"/></div>
+			<div class="box"><img src="img/8002.png"/></div>
+			<div class="box"><img src="../img/1.png"/></div>
+			<div class="box"><img src="img/8003.png"/></div>
+			<div class="box"><img src="../img/2.png"/></div>
+			<div class="box"><img src="img/8001.png"/></div>
+			<div class="box"><img src="../img/0.png"/></div>
+			<div class="box"><img src="img/8002.png"/></div>
+			<div class="box"><img src="../img/1.png"/></div>
+			<div class="box"><img src="img/8003.png"/></div>
+			<div class="box"><img src="../img/2.png"/></div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$("#demo").waterfall({
+  		itemClass: ".box",
+  		minColCount: 2,
+  		spacingHeight: 10,
+  		resizeable: true,
+  		ajaxCallback: function(success, end) {
+    		var data = {"data": [
+      			{"src": "8001.png" }, 
+      			{"src": "8002.png" }, 
+      			{"src": "8003.png" }, 
+      			{"src": "0.png" }, 
+      			{"src": "1.png" }, 
+      			{"src": "2.png" }, 
+    		]};
+    		var str = "";
+    		var templ = '<div class="box" style="opacity:0;filter:alpha(opacity=0);"><div class="pic"><img src="img/{{src}}" /></div></div>'
+  
+    		for(var i = 0; i < data.data.length; i++) {
+      			str += templ.replace("{{src}}", data.data[i].src);
+    		}
+    		$(str).appendTo($("#div1"));
+    		success();
+    		end();
+  		}
+	});
+</script>

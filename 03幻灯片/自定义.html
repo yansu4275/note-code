@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-3.2.0.min.js"></script>
+		<style type="text/css">
+			.bbb .carousel{
+				margin: 0 auto;
+				outline: 2px solid #f00;
+				position: relative;
+				overflow: hidden;
+			}
+			.bbb .slider{
+				position: absolute;
+			}
+			.bbb .slider img{
+				float: left;
+			}
+			
+			
+			
+			.bbb .paging{
+				position: absolute;
+				left: 20px;
+				bottom: 20px;
+			}
+			.bbb .paging a{
+				text-decoration: none;
+				color: #FFF9EC;
+				background: #0000FF;
+				border-radius: 3px;
+				padding:5px 10px;
+				margin: 0px 5px;
+			}
+			.bbb .paging a:hover{
+				background: #FD482C;
+				font-weight: bold;
+				color: #000000;
+			}
+			
+			
+			
+			.bbb .controllers{
+				position: absolute;
+				background: #CCCCCC;
+				top: 50%;
+			}
+			.bbb .conl-left,.conl-right{
+				background: red;
+				padding: 10px;
+			}
+			.bbb .conl-left{
+				margin-right: 100px;
+			}
+			.bbb .paging-active{
+				background: #FD482C !important;
+				font-weight: bold;
+				color: #000000;
+			}
+			
+			/**************************************************************/
+			/**************************************************************/
+			
+			.aaa .carousel{
+				margin: 0 auto;
+				outline: 2px solid #f00;
+				position: relative;
+				overflow: hidden;
+			}
+			.aaa .slider{
+				position: absolute;
+			}
+			.aaa .slider img{
+				float: left;
+			}
+			
+			
+			
+			.aaa .paging{
+				position: absolute;
+				left: 20px;
+				bottom: 20px;
+			}
+			.aaa .paging a{
+				text-decoration: none;
+				color: #FFF9EC;
+				background: #CCCCCC;
+				border-radius: 3px;
+				padding:5px 10px;
+				margin: 0px 5px;
+			}
+			.aaa .paging a:hover{
+				background: orange;
+				font-weight: bold;
+				color: #000000;
+			}
+			
+			
+			.aaa .controllers{
+				position: absolute;
+				background: #CCCCCC;
+				top: 50%;
+			}
+			.aaa .conl-left,.conl-right{
+				background: red;
+				padding: 10px;
+			}
+			.aaa .conl-left{
+				margin-right: 100px;
+			}
+			
+			.aaa .paging-active{
+				background: #C9302C !important;
+				font-weight: bold;
+				color: #000000;
+			}
+			/***************************************************************/
+		
+			/***************************************************************/
+		</style>
+	</head>
+	<body>
+		<p>一个页面中有两个幻灯片时，只需要修改父元素 bbb 、$nextActive2、play2，确保不会冲突</p>
+		<div class="bbb">
+			<div class="carousel">
+				<div class="slider">
+					<a href=""><img src="img/8001.png"/></a>
+					<a href=""><img src="img/8002.png"/></a>
+					<a href=""><img src="img/8003.png"/></a>
+				</div>
+				<div class="paging">
+					<a href="#" rel="1">1</a>
+					<a href="#" rel="2">2</a>
+					<a href="#" rel="3">3</a>
+				</div>	
+				<div class="controllers">
+					<a href="#" class="conl-left"><<</a>
+					<a href="#" class="conl-right">>></a>
+				</div>
+			</div>
+		</div>
+		<!--************************************************************-->
+		<!--************************************************************-->
+		<!--************************************************************-->
+		<div class="aaa">
+			<div class="carousel">
+				<div class="slider">
+					<a href=""><img src="img/1.jpg"/></a>
+					<a href=""><img src="img/2.jpg"/></a>
+					<a href=""><img src="img/3.jpg"/></a>
+				</div>
+				<div class="paging">
+					<a href="#" rel="1">1</a>
+					<a href="#" rel="2">2</a>
+					<a href="#" rel="3">3</a>
+				</div>	
+				<div class="controllers">
+					<a href="#" class="conl-left"><<</a>
+					<a href="#" class="conl-right">>></a>
+				</div>
+			</div>
+		</div>
+		
+		<!--****************************************************************-->
+		
+		<!--****************************************************************-->
+	</body>
+</html>
+<script type="text/javascript">
+	(function(){
+		//获取图片宽高、数量，赋给相应标签
+		var imgWidth = $('.bbb .slider img').eq(0).width()
+		var imgHeight = $('.bbb .slider img').eq(0).height()
+		var imgSum = $('.bbb .slider img').length
+		var sliderWidth = imgWidth * imgSum;
+		
+		$('.bbb .carousel').css({'width':imgWidth,'height':imgHeight})
+		$('.bbb .slider').css({'width':sliderWidth})
+		
+		
+		//轮播图滚动下一张
+		var rotate = function(){
+			var trigerID = $nextActive2.attr('rel') - 1;
+			var sliderPosition = trigerID * imgWidth;
+			
+			$('.bbb .paging a').removeClass('.bbb paging-active');
+			$nextActive2.addClass('.bbb paging-active');
+			
+			$('.bbb .slider').animate({
+				left:-sliderPosition
+			},500)
+		};
+		
+		//轮播图重复滚动。滚到最后一个时设置下一张为第一个
+		var rotateSwitch = function(){
+			play2=setInterval(function(){
+				$nextActive2=$('.bbb .paging-active').next();
+				if ($nextActive2.length===0) {
+					$nextActive2 = $('.bbb .paging a').eq(0)
+				};
+				rotate(); 
+			},2000);
+		}
+		rotateSwitch()
+		
+		//第一个指示灯初始显示
+		$('.bbb .paging a:first').addClass('.bbb paging-active')
+		
+		//指示灯点击效果
+		$('.bbb .paging a').click(function(){
+			$(this).addClass('.bbb paging-active')
+			$('.bbb .paging-active').not($(this)).removeClass('.bbb paging-active')
+		})
+		
+		//点击指示灯时，点击的那个按钮设置为下一个，随之滚动过去，
+		//暂停轮播图停止原本的进行的动画，滚动过去后再重新开启
+		//return false 阻止指示灯a链接跳转
+		$('.bbb .paging a').click(function(){
+			$nextActive2=$(this);
+			
+			clearInterval(play2);
+			rotate()
+			rotateSwitch()
+			return false
+		})
+		
+		//鼠标移入暂停，移出开始
+		$('.bbb .slider').hover(
+			function(){
+				clearInterval(play2)
+			},function(){
+				rotateSwitch()
+			}
+		)
+		
+		//左右控制器
+		$('.bbb .conl-left').click(function(){
+			$nextActive2=$('.bbb .paging-active').prev();
+			
+			if ($nextActive2.length===0) {
+				$nextActive2 = $('.bbb .paging a').eq(-1)
+			};
+				
+			clearInterval(play2);
+			rotate()
+			rotateSwitch()
+			return false
+		})
+		
+		$('.bbb .conl-right').click(function(){
+			$nextActive2=$('.bbb .paging-active').next();
+			
+			if ($nextActive2.length===0) {
+				$nextActive2 = $('.bbb .paging a').eq(0)
+			};
+			
+			clearInterval(play2);
+			rotate()
+			rotateSwitch()
+			return false
+		});
+	})();
+	
+	//*************************************************************
+	//*************************************************************
+	(function(){
+		//获取图片宽高、数量，赋给相应标签
+		var imgWidth = $('.aaa .slider img').eq(0).width()
+		var imgHeight = $('.aaa .slider img').eq(0).height()
+		var imgSum = $('.aaa .slider img').length
+		var sliderWidth = imgWidth * imgSum;
+		
+		$('.aaa .carousel').css({'width':imgWidth,'height':imgHeight})
+		$('.aaa .slider').css({'width':sliderWidth})
+		
+		
+		//轮播图滚动下一张
+		var rotate = function(){
+			var trigerID = $nextActive.attr('rel') - 1;
+			var sliderPosition = trigerID * imgWidth;
+			
+			$('.aaa .paging a').removeClass('.aaa paging-active');
+			$nextActive.addClass('.aaa paging-active');
+			
+			$('.aaa .slider').animate({
+				left:-sliderPosition
+			},500)
+		};
+		
+		//轮播图重复滚动。滚到最后一个时设置下一张为第一个
+		var rotateSwitch = function(){
+			play=setInterval(function(){
+				$nextActive=$('.aaa .paging-active').next();
+				if ($nextActive.length===0) {
+					$nextActive = $('.aaa .paging a').eq(0)
+				};
+				rotate(); 
+			},2000);
+		}
+		rotateSwitch()
+		
+		//第一个指示灯初始显示
+		$('.aaa .paging a:first').addClass('.aaa paging-active')
+		
+		//指示灯点击效果
+		$('.aaa .paging a').click(function(){
+			$(this).addClass('.aaa paging-active')
+			$('.aaa .paging-active').not($(this)).removeClass('.aaa paging-active')
+		})
+		
+		//点击指示灯时，点击的那个按钮设置为下一个，随之滚动过去，
+		//暂停轮播图停止原本的进行的动画，滚动过去后再重新开启
+		//return false 阻止指示灯a链接跳转
+		$('.aaa .paging a').click(function(){
+			$nextActive=$(this);
+			
+			clearInterval(play);
+			rotate()
+			rotateSwitch()
+			return false
+		})
+		
+		//鼠标移入暂停，移出开始
+		$('.aaa .slider').hover(
+			function(){
+				clearInterval(play)
+			},function(){
+				rotateSwitch()
+			}
+		)
+		
+		//左右控制器
+		$('.aaa .conl-left').click(function(){
+			$nextActive=$('.aaa .paging-active').prev();
+			
+			if ($nextActive.length===0) {
+				$nextActive = $('.aaa .paging a').eq(-1)
+			};
+				
+			clearInterval(play);
+			rotate()
+			rotateSwitch()
+			return false
+		})
+		
+		$('.aaa .conl-right').click(function(){
+			$nextActive=$('.aaa .paging-active').next();
+			
+			if ($nextActive.length===0) {
+				$nextActive = $('.aaa .paging a').eq(0)
+			};
+			
+			clearInterval(play);
+			rotate()
+			rotateSwitch()
+			return false
+		});
+	})();
+	
+	
+		
+	</script>

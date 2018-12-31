@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="swiper.min.css" />
+		<script src="swiper.min.js"></script>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<style type="text/css">
+			.swiper-container{
+				width: 500px;
+				height: 300px;
+			}
+			.swiper-slide{
+				background: #FFF9EC;
+			}
+			
+			/*自定义分页器样式，未选中部分。默认为圆的，可以修改*/
+			.swiper-pagination-bullet {
+      			width: 20px;
+		      	height: 20px;
+		      	text-align: center;
+		      	line-height: 20px;
+		      	font-size: 12px;
+			    opacity: 1;
+			    background: rgba(0,0,0,0.2);
+			}
+			/*				     选中部分*/
+		    .swiper-pagination-bullet-active {
+		      	color:#fff;
+		      	background: #007aff;
+		      	/*width: 30px;*/
+		    }
+		</style>
+	</head>
+	<body>
+		<h4>
+			<a href="http://www.swiper.com.cn/api">swiper api 网址</a>
+		</h4>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">111111</div>
+				<div class="swiper-slide">222222</div>
+				<div class="swiper-slide">333333</div>
+				<div class="swiper-slide">444444</div>
+				<div class="swiper-slide">555555</div>
+			</div>
+			
+			<!--如果需要导航按钮-->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+			
+			<!--如果需要分页器-->
+			<div class="swiper-pagination"></div>
+			
+			
+			<!--如果需要滚动条-->
+			<div class="swiper-scrollbar"></div>
+		</div>
+		
+		<button class="aaa">跳转到最后一个页面</button>
+	</body>
+</html>
+
+<script>     
+	$(function(){
+		//初始化插件
+	  	var mySwiper = new Swiper ('.swiper-container',{
+      		//回路，和滚动条有时候会有些不协调
+      		loop:true,
+      		
+      		
+      		//开启自动切换，幻灯片，默认3秒，delay 可自定义
+      		autoplay:true,
+//    		autoplay:{
+//    			delay:3000,
+//    		},
+		  	
+		  	onTransitionEnd: function(swiper){
+		      	alert(swiper.activeIndex) //切换结束时，告诉我现在是第几个slide
+		    }
+	  	})
+	  	
+	  	$('.aaa').click(function(){
+	  		mySwiper.slideTo(5)
+	  	})
+	})
+</script>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span id="aaa"></span>
+	</body>
+</html>
+<script type="text/javascript">
+	setInterval(function(){
+		var a = new Date()
+		
+		nowTime = a.getFullYear()+'年' + (a.getMonth()+1)+'月' + a.getDate()+'日' + a.getHours()+':' + a.getMinutes()+':' + a.getSeconds()
+		
+		aaa.innerHTML=nowTime
+	},1000)
+</script>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">		
+		<title></title>
+		<link rel="stylesheet" href="../swiper.min.css" />
+		<script src="../swiper.min.js"></script>
+		<script src="../jquery-1.11.1.min.js"></script>
+		<style type="text/css">
+			
+			.aaa{
+				/*width: 500px;*/
+				height: 140px;
+				outline: 1px #B72F20 dashed;
+				overflow: hidden;
+			}
+			
+			.swiper-container{
+				/*width: 200px;*/
+				height: 20px;
+				outline: 1px red solid;
+				overflow:  visible;
+				margin: 0;
+				position: relative;
+				top:60px;
+				display: inline-block;
+			}
+			.swiper-wrapper{
+				/*width: 150px;*/
+				outline: 1px #0000FF solid;
+			}
+			.swiper-slide{
+				background: #FFF9EC;
+				width: 100px;
+				height: 20px !important;
+				outline: 1px #00C599 solid;
+
+			}
+			
+			/*				     选中部分*/
+		    .swiper-pagination-bullet-active {
+		      	color:#fff;
+		      	background: #007aff;
+		      	/*width: 30px;*/
+		    }
+		    
+		    
+		    .box{
+		    	width: 100%;
+		    	height: 20px;
+		    	outline: 3px #008000 dashed;
+		    	position: absolute;
+		    	z-index: 10;
+		    }
+		    
+		    .chose_day .swiper-wrapper p,.chose_hour .swiper-wrapper p{
+		    	margin: 0;
+		    	display: block;
+		    }
+		    
+		    /*在上半部分添加禁止滚动区域*/
+		    .swiper-wrapper{
+		    	position: relative;
+		    }
+		    .bbb{
+		    	position: absolute;
+		    	top: -40px;
+		    }
+		    
+		</style>
+	</head>
+	<body>
+		<h4>
+			<a href="http://www.swiper.com.cn/api">swiper api 网址</a>
+		</h4>
+		
+		<div class="aaa">
+			<!--日期-->
+			<div class="swiper-container chose_day">
+				<div class="box"></div>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"></div>
+					<div class="swiper-slide"></div>
+					<div class="swiper-slide"></div>
+					<div class="a" style="color: red;">
+						<div class="swiper-slide"></div>
+						<div class="swiper-slide"></div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<!--小时-->
+			<div class="swiper-container chose_hour">
+				<div class="box"></div>
+				<div class="swiper-wrapper">
+					<div class="bbb">
+						<p>000</p>
+						<p>000</p>
+					</div>
+					
+					<p>1111</p>
+				</div>
+				
+			</div>
+			
+			<!--分钟-->
+			<div class="swiper-container chose_minute">
+				<div class="box"></div>
+				<div class="swiper-wrapper">
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		<button>按钮</button>
+		<p>时间：<span>0</span></p>
+	</body>
+</html>
+		
+<script>     
+	$(function(){
+	  	dobj=new Date();
+		year=dobj.getFullYear();
+		month=dobj.getMonth() + 1; 	/*js 月份是从0开始的，所以要加1*/
+		day=dobj.getDate();
+		week=dobj.getDay();			/*周几*/
+		hour=dobj.getHours();
+		minute=dobj.getMinutes();
+		second=dobj.getSeconds();
+		
+		
+		function GetDateStr(AddDayCount) { 
+			var dd = new Date(); 
+			dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+			
+//			var y = dd.getFullYear();//获取当前年份的日期 
+			var m = dd.getMonth()+1;//获取当前月份的日期 
+			var d = dd.getDate(); 
+			
+//			var yy = y.toString().slice(2)
+			return m + "月" + d + "日"; 
+		} 
+		
+		
+		var arr1 = [GetDateStr(-1),GetDateStr(0),GetDateStr(1),GetDateStr(2),GetDateStr(3)]
+		var arr2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+		var arr3 = [00,10,20,30,40,50]
+	  	
+	  	
+// ***************日期	  	
+	  	$('.chose_day .swiper-slide').each(function(i){
+			$(this).append(arr1[i])	  		
+	  	})
+		// 不可选中的部分
+		$('.chose_day .swiper-wrapper .a div').eq(0).html(GetDateStr(2))
+		$('.chose_day .swiper-wrapper .a div').eq(1).html(GetDateStr(3))
+	  	
+	  	
+// ***************小时
+	  	for (var i=0; i<arr2.length; i++) {
+			var oli = $("<div class='swiper-slide'></div>")
+			oli.html(arr2[i])
+			$('.chose_hour .swiper-wrapper').append(oli)
+		}
+	  	
+	  	
+// ***************分钟
+		for (var i=0; i<arr3.length; i++) {
+			var oli = $("<div class='swiper-slide'></div>")
+			oli.html(arr3[i])
+			$('.chose_minute .swiper-wrapper').append(oli)
+		}
+	  	
+	  	
+	  	var mySwiper = new Swiper ('.swiper-container',{
+      		//垂直切换
+      		direction: 'vertical',
+      		freeMode : true,
+		  	freeModeSticky : true,
+		  	centeredSlides : true,
+		  	mousewheelControl : true,
+	  	})
+	  	
+
+	  	var mySwiper_day = new Swiper ('.chose_day',{
+      		direction: 'vertical',
+      		//根据当前时间动态设置时间选择框起始位置
+      		initialSlide : 1,
+      		freemode:true,
+      		freeModeSticky: true,
+	  	})
+	  	
+	  	var mySwiper_hour = new Swiper ('.chose_hour',{
+      		direction: 'vertical',
+      		//根据当前时间动态设置时间选择框起始位置
+      		initialSlide : hour-1,
+      		freemode:true,
+      		freeModeSticky: true,
+      		
+	  	})
+
+		
+	  	$('button').click(function(){
+	  		var choseDay = $('.chose_day .swiper-slide-active').html()
+	  		var choseHour = $('.chose_hour .swiper-slide-active').html()
+	  		var choseMinute = $('.chose_minute .swiper-slide-active').html()
+	  		
+	  		console.log(choseDay+ ' ' + choseHour + ':' + choseMinute)
+	  		$('span').html( choseDay+ ' ' + choseHour + ':' + choseMinute)
+	  	})
+	  	
+	  	
+//		 var mySwiper = new Swiper('.swiper-container',{
+//		 	onTouchEnd: function(){
+////	  			$('span').html( choseDay+ ' ' + choseHour + ':' + choseMinute)
+//				alert('.0000')
+//			}
+//		})
+
+			
+			
+	})
+</script>
